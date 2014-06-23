@@ -240,7 +240,7 @@ class NumberTools
 	}
 
 	// area of a right angle triangle
-	// where a and b are the two lines at right angles to each other 
+	// where a and b are the lengths of two lines at right angles to each other 
 	public static function areaOfRightTriangle(a:Float, b:Float):Float {
 		return (a * b) / 2;
 	}
@@ -251,15 +251,10 @@ class NumberTools
 	public static function areaOfTriangle(base:Float, perpHeight:Float):Float {
 		return (0.5 * base) * perpHeight;
 	}
-	
-	/* 
-	//
-	// Private functions, keep out! 
-	//
-	*/
-	
+
+	// Checks to see if a specific float can be located inside an array 
 	// Used by the Random Float function to determine if the Float is one of the excluded values 
-	private static function floatInArray(number:Float, array:Array<Float>):Bool {
+	public static function floatInArray(number:Float, array:Array<Float>):Bool {
 		var r:Bool = false;
 		
 		for (i in 0...array.length) {
@@ -271,8 +266,9 @@ class NumberTools
 		return r;
 	}
 	
+	// Checks to see if a specific int can be located inside an array 
 	// Used by the Random Int function to determine if the Int is one of the excluded values 
-	private static function intInArray(number:Int, array:Array<Int>):Bool {
+	public static function intInArray(number:Int, array:Array<Int>):Bool {
 		var r:Bool = false;
 		
 		for (i in 0...array.length) {
