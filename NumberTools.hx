@@ -165,7 +165,7 @@ class NumberTools
 	}
 	
 	// Return the ratio of 2 values 
-	// vlaue 1 by value 2
+	// value 1 by value 2
 	public static function ratio(value1:Float, value2:Float):Float {
 		return value1 / value2;
 	}
@@ -237,6 +237,12 @@ class NumberTools
 	// Returns the area of an Elipse
 	public static function areaOfElipse(bigRadius:Float, smallRadius:Float):Float {
 		return Math.PI * (bigRadius * smallRadius);
+	}
+
+	// area of a right angle triangle
+	// where a and b are the two lines at right angles to each other 
+	public static function areaOfRightTriangle(a:Float, b:Float):Float {
+		return (a * b) / 2;
 	}
 	
 	/* 
