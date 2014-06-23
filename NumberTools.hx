@@ -244,6 +244,13 @@ class NumberTools
 	public static function areaOfRightTriangle(a:Float, b:Float):Float {
 		return (a * b) / 2;
 	}
+
+	// Returns the Area of a Triangle 
+	// base = pick a side 
+	// perpHaight = length to the top of the triangle, at a right angle to the base 
+	public static function areaOfTriangle(base:Float, perpHeight:Float):Float {
+		return (0.5 * base) * perpHeight;
+	}
 	
 	/* 
 	//
