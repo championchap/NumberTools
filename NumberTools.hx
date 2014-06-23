@@ -5,7 +5,8 @@ import flash.system.Capabilities;
 
 /**
  * 
- * A collection of functions for manipulating and generating numbers
+ *	NumberTools
+ *	A collection of functions for manipulating and generating numbers
  *
  */
  
@@ -77,7 +78,7 @@ class NumberTools
 		return d;
 	}
 	
-	// Return the ammount of numbers after the decimal point in a float 
+	// Return the amount of numbers after the decimal point in a float 
 	public static function getDecimals(value:Float):Int {
 		var arr:Array<String> = Std.string(value).split(".");
 		var dec:Int = 0;
@@ -105,7 +106,8 @@ class NumberTools
 		}
 	}
 	
-	// Return a random Boolean value, not sure this really belongs in here though 
+	// Return a random Boolean value
+	// not sure this really belongs in here
 	public static function randomBool():Bool {
 		if(Math.round(Math.random()) == 0) {
 			return true;
@@ -115,7 +117,6 @@ class NumberTools
 	}
 	
 	// Checks to see if a number is Odd or not 
-	// Returns true if it is, false if it's not
 	public static function isOdd(value:Int):Bool {
 		if (value % 2 == 1) {
 			return true;
@@ -125,13 +126,42 @@ class NumberTools
 	}
 	
 	// Checks to see if a number is Even or not 
-	// Returns true if it is, false if it's not
 	public static function isEven(value:Int):Bool {
 		if (value % 2 == 1) {
 			return false;
 		} else {
 			return true;
 		}
+	}
+
+	// Checks to see if the value is a prime number or not 
+	public static function isPrime(value:Int):Bool {
+		if(value > 1){
+			for(i in 2...value-1){
+				if(value % i == 0) {
+					return false;
+				}
+			}
+		} else {
+			throw "Error: value must be greater than 1!";
+		}
+		
+		return true;
+	}
+
+	// Lists all integers under a certain value 
+	public static function listPrimesUnder(value:Int):Array<Int> {
+		var primes:Array<Int> = new Array<Int>();
+
+		if(value > 1){
+			for(i in 2...value) {
+				if(isPrime(i)){
+					primes.push(i);
+				}
+			}
+		}
+
+		return primes;
 	}
 	
 	// Return the ratio of 2 values 
@@ -149,6 +179,15 @@ class NumberTools
 	public static function dotProduct(ax:Float, ay:Float, bx:Float, by:Float):Float {
 		return ax * bx + ay * by;
 	}
+
+	// Returns the Factorial of a number 
+	public static function factorial(value:Int):Int {
+		if (value < 2) {
+			return 1;
+		}
+
+		return value*factorial(value-1);
+	}
 	
 	// Finds the length of a vector 
 	public static function vectorLength(dx:Float, dy:Float):Float {
@@ -161,13 +200,12 @@ class NumberTools
 	}
 
 	// Convert pixel units to millimeters 
-	// This one needs figuring out still 
 	public static function pixelsToMM(pixels:Float):Float {
-		return 0.0;
+		return (pixels / Capabilities.screenDPI) * 25.4
 	}
 
 	// Fibonacci sequence generated recursively 
-	// this is really quite slow 
+	// Be Careful! This is really quite slow 
 	public static function fibonacci(i:Int):Int {
 		if(i == 1 || i == 2) {
 			return 1;
@@ -176,10 +214,29 @@ class NumberTools
 		}
 	}
 
-	// TODO
 	// Use this function to generate Sine Waves 
-	public static function sineWave():Void {
+	public static function sineWave(startPos:Point, speed:Float, waveHeight:Int, waveLength:Int):Point {
+		var p:Point = startPos;
 
+		p.x += speed;
+		p.y = (Math.sin(p.x / waveLength) * waveHeight);
+
+		return p;
+	}
+
+	// Returns the Area of a Rectangle 
+	public static function areaOfRectangle(width:Float, height:Float):Float {
+		return width * height;
+	}
+
+	// Returns the Area of a perfect Circle, no Ellipses!
+	public static function areaOfCircle(radius:Float):Float {
+		return Math.PI * (radius * radius);
+	}
+
+	// Returns the area of an Elipse
+	public static function areaOfElipse(bigRadius:Float, smallRadius:Float):Float {
+		return Math.PI * (bigRadius * smallRadius);
 	}
 	
 	/* 
