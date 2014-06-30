@@ -201,7 +201,7 @@ class NumberTools
 
 	// Convert pixel units to millimeters 
 	public static function pixelsToMM(pixels:Float):Float {
-		return (pixels / Capabilities.screenDPI) * 25.4
+		return (pixels / Capabilities.screenDPI) * 25.4;
 	}
 
 	// Fibonacci sequence generated recursively 
