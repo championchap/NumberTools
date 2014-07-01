@@ -1,6 +1,6 @@
 # NumberTools #
 
-A small collection of static Maths helper functions for [Haxe](http://haxe.org).
+A small collection of static Maths helper functions for [Haxe](http://haxe.org) and AS3.
 
 I use this constantly. Hopefully somebody else finds it useful too!
 
