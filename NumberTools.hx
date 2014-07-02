@@ -204,13 +204,19 @@ class NumberTools
 		return (pixels / Capabilities.screenDPI) * 25.4;
 	}
 
-	// Fibonacci sequence generated recursively 
-	// Be Careful! This is really quite slow 
+	// Generate the Fibonacci Sequence
+	// If you wanted to get the 5th number in the sequence you'd use fibonacci(5) for example. 
 	public static function fibonacci(i:Int):Int {
-		if(i == 1 || i == 2) {
+		var sequence:Array<Int> = [1, 1];
+		
+		if (i == 1 || i == 2) {
 			return 1;
 		} else {
-			return fibonacci(i -1) + fibonacci(i-2);
+			while (sequence.length < i) {
+				sequence.push(sequence[sequence.length -1] + sequence[sequence.length -2]);
+			}
+			
+			return sequence[sequence.length-1];
 		}
 	}
 
