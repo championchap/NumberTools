@@ -230,6 +230,11 @@ class NumberTools
 		}
 	}
 
+	// Use this to clear out the fibonacci sequence if for some reason it's taking up too much memory 
+	public static function resetFibSequence():Void {
+		sequence = [1, 1];
+	}
+
 	// Use this function to generate Sine Waves 
 	public static function sineWave(startPos:Point, speed:Float, waveHeight:Int, waveLength:Int):Point {
 		var p:Point = startPos;
