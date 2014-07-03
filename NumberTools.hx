@@ -231,6 +231,22 @@ class NumberTools
 
 	}
 
+	// Generate the fibonacci sequence up to the specified location
+	// fibonacciSequence(5) would return [1, 1, 2, 3, 5] for example 
+	public static function fibonacciSequence(toPos:Int):Array<Int> {
+		// Make sure the sequence is all there 
+		if(sequence.length - 1 < toPos) {
+			fibonacci(toPos);
+			return sequence;
+		} else {
+			if (sequence.length - 1 == toPos) {
+				return sequence;
+			} else {
+				return sequence.slice(0, toPos);
+			}
+		}
+	}
+
 	// Use this to clear out the fibonacci sequence if for some reason it's taking up too much memory 
 	public static function resetFibSequence():Void {
 		sequence = [1, 1];
