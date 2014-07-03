@@ -11,7 +11,12 @@ import flash.system.Capabilities;
  */
  
 class NumberTools
-{	
+{
+
+	// Used by fibonacci()
+	// Stores the generated sequence so we don't need to work it all out every time
+	private static var sequence:Array<Int> = [1, 1];
+
 	// Generate a Random Float
 	public static function randomFloat(max:Float, min:Float, excluding:Array<Float> = null):Float {
 		var num:Float = Math.random()*(max - min) + min;
@@ -207,16 +212,21 @@ class NumberTools
 	// Generate the Fibonacci Sequence
 	// If you wanted to get the 5th number in the sequence you'd use fibonacci(5) for example. 
 	public static function fibonacci(i:Int):Int {
-		var sequence:Array<Int> = [1, 1];
-		
 		if (i == 1 || i == 2) {
 			return 1;
 		} else {
-			while (sequence.length < i) {
-				sequence.push(sequence[sequence.length -1] + sequence[sequence.length -2]);
-			}
 			
-			return sequence[sequence.length-1];
+			if (sequence.length - 1 < i) {
+				
+				while (sequence.length < i) {
+					sequence.push(sequence[sequence.length - 1] + sequence[sequence.length - 2]);
+				}
+				
+				return sequence[sequence.length - 1];
+				
+			} else {
+				return sequence[i - 1];
+			}
 		}
 	}
 
