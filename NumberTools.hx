@@ -209,7 +209,7 @@ class NumberTools
 		return (pixels / Capabilities.screenDPI) * 25.4;
 	}
 
-	// Generate the Fibonacci Sequence
+	// Generate a fibonacci number 
 	// If you wanted to get the 5th number in the sequence you'd use fibonacci(5) for example. 
 	public static function fibonacci(i:Int):Int {
 		if (i == 1 || i == 2) {
@@ -228,6 +228,7 @@ class NumberTools
 				return sequence[i - 1];
 			}
 		}
+
 	}
 
 	// Use this to clear out the fibonacci sequence if for some reason it's taking up too much memory 
