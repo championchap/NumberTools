@@ -293,29 +293,13 @@ class NumberTools
 	// Checks to see if a specific float can be located inside an array
 	// Used by the Random Float function to determine if the Float is one of the excluded values
 	public static function floatInArray(number:Float, array:Array<Float>):Bool {
-		var r:Bool = false;
-
-		for (i in 0...array.length) {
-			if (array[i] == number) {
-				r = true;
-			}
-		}
-
-		return r;
+		return Lambda.has(array, number);
 	}
 
 	// Checks to see if a specific int can be located inside an array
 	// Used by the Random Int function to determine if the Int is one of the excluded values
 	public static function intInArray(number:Int, array:Array<Int>):Bool {
-		var r:Bool = false;
-
-		for (i in 0...array.length) {
-			if (array[i] == number) {
-				r = true;
-			}
-		}
-
-		return r;
+		return Lambda.has(array, number);
 	}
 
 	// Finds the point along a line segment that is closest to a given point in 2D space 
