@@ -318,4 +318,23 @@ class NumberTools
 		return r;
 	}
 
+	// Finds the point along a line segment that is closest to a given point in 2D space 
+	// Adapted from code I found on Stack Overflow
+	// http://stackoverflow.com/questions/3120357/get-closest-point-to-a-line 
+	public static function closestPointOnLine(a:Point, b:Point, p:Point, ?toInfinity:Bool = false):Point {
+		var aToP = [p.x - a.x, p.y - a.y]; // store the vector A > P
+		var aToB = [b.x - a.x, b.y - a.y]; // store the vector A > B
+
+		var atb2 = (aToB[0] * aToB[0]) + (aToB[1] * aToB[1]); // Find the squared magnitude of A > B
+		var atp_dot_atb = (aToP[0] * aToB[0]) + (aToP[1] * aToB[1]); // the dot product of A > P and A > B
+		var t = atp_dot_atb / atb2; // the normalised "distance" from a to the closest point 
+
+		// extend the line out to infinity? 
+		if(!toInfinity) {
+			t = clamp(t, 0, 1);
+		}
+
+		return new Point(a.x + aToB[0] * t, a.y + aToB[1] * t); // add the distance to A, moving towards B
+	}
+
 }
