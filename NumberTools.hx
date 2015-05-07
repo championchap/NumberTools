@@ -182,7 +182,7 @@ class NumberTools
 
 	// Finds the dot product value of 2 vectors - a and b
 	public static function dotProduct(ax:Float, ay:Float, bx:Float, by:Float):Float {
-		return ax * bx + ay * by;
+		return (ax * bx) + (ay * by);
 	}
 
 	// Returns the Factorial of a number
@@ -310,7 +310,7 @@ class NumberTools
 		var aToB = [b.x - a.x, b.y - a.y]; // store the vector A > B
 
 		var atb2 = (aToB[0] * aToB[0]) + (aToB[1] * aToB[1]); // Find the squared magnitude of A > B
-		var atp_dot_atb = (aToP[0] * aToB[0]) + (aToP[1] * aToB[1]); // the dot product of A > P and A > B
+		var atp_dot_atb = dotProduct(aToP[0], aToP[1], aToB[0], aToB[1]); // the dot product of A > P and A > B
 		var t = atp_dot_atb / atb2; // the normalised "distance" from a to the closest point 
 
 		// extend the line out to infinity? 
