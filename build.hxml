@@ -1,0 +1,5 @@
+# Files to include
+NumberTools.hx
+
+# Output to 
+-swf bin/NumberTools.swc
