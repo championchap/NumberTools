@@ -86,29 +86,20 @@ class Tools {
 	// Return a random Boolean value
 	// not sure this really belongs in here
 	public static function randomBool():Bool {
-		if(Math.round(Math.random()) == 0) {
-			return true;
-		} else {
-			return false;
-		}
+		if(Math.round(Math.random()) == 0) { return true; }
+		return fasle;
 	}
 
 	// Checks to see if a number is Odd or not
 	public static function isOdd(value:Int):Bool {
-		if (value % 2 == 1) {
-			return true;
-		} else {
-			return false;
-		}
+		if (value % 2 == 1) { return true; }
+		return false;
 	}
 
 	// Checks to see if a number is Even or not
 	public static function isEven(value:Int):Bool {
-		if (value % 2 == 1) {
-			return false;
-		} else {
-			return true;
-		}
+		if (value % 2 == 1) { return false; }
+		return true;
 	}
 
 	// Checks to see if the value is a prime number or not
