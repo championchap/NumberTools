@@ -53,7 +53,6 @@ class Tools {
 		return Math.round(num * precision) / precision;
 	}
 
-	#if flash
 	// Return the amount of numbers after the decimal point in a float
 	public static function getDecimals(value:Float):Int {
 		var arr:Array<String> = Std.string(value).split(".");
@@ -65,7 +64,6 @@ class Tools {
 
 		return dec;
 	}
-	#end
 
 	// Makes sure a value is within a certain range
 	public static function clamp(value:Float, min:Float, max:Float):Float {
@@ -87,7 +85,7 @@ class Tools {
 	// not sure this really belongs in here
 	public static function randomBool():Bool {
 		if(Math.round(Math.random()) == 0) { return true; }
-		return fasle;
+		return false;
 	}
 
 	// Checks to see if a number is Odd or not
