@@ -1,7 +1,9 @@
-package;
+package numbertools;
 
+#if flash
 import flash.geom.Point;
 import flash.system.Capabilities;
+#end
 
 /**
  *
@@ -10,8 +12,8 @@ import flash.system.Capabilities;
  *
  */
 
-class NumberTools
-{
+@:expose
+class Tools {
 
 	// Used by fibonacci()
 	// Stores the generated sequence so we don't need to work it all out every time
@@ -43,24 +45,6 @@ class NumberTools
 		}
 	}
 
-	// Returns the distance between 2 points in the same coordinate space
-	public static function distanceBetween(firstPos:Point, secondPos:Point):Float {
-		var dx:Float = firstPos.x - secondPos.x;
-		var dy:Float = firstPos.y - secondPos.y;
-
-		return vectorLength(dx, dy);
-	}
-
-	// Convert a Float representing an angle in Degrees to a Float representing an angle in Radians
-	public static function degreesToRadians(deg:Float):Float {
-		return deg * (Math.PI / 180);
-	}
-
-	// Convert a Float representing an angle in Radians to a Float representing an angle in Degrees
-	public static function radiansToDegrees(rad:Float):Float {
-		return rad * (180 / Math.PI) + 180;
-	}
-
 	// Rounds a Float to a to a number of decimal places
 	// Example - roundTo(1.12345, 2) will output 1.12,
 	// 			 roundTo(1.12345, 4) will output 1.1234, etc.
@@ -69,20 +53,7 @@ class NumberTools
 		return Math.round(num * precision) / precision;
 	}
 
-	// Return the angle of a line in Radians
-	public static function getAngleR(x1:Float, y1:Float, x2:Float, y2:Float):Float {
-		var dx:Float = x2 - x1;
-		var dy:Float = y2 - y1;
-
-		return Math.atan2(dy, dx);
-	}
-
-	// Returns the angle of a line in Degrees
-	public static function getAngleD(x1:Float, y1:Float, x2:Float, y2:Float):Float {
-		var d:Float = radiansToDegrees(getAngleR(x1, y1, x2, y2));
-		return d;
-	}
-
+	#if flash
 	// Return the amount of numbers after the decimal point in a float
 	public static function getDecimals(value:Float):Int {
 		var arr:Array<String> = Std.string(value).split(".");
@@ -94,6 +65,7 @@ class NumberTools
 
 		return dec;
 	}
+	#end
 
 	// Makes sure a value is within a certain range
 	public static function clamp(value:Float, min:Float, max:Float):Float {
@@ -199,6 +171,7 @@ class NumberTools
 		return Math.sqrt((dx * dx) + (dy * dy));
 	}
 
+	#if flash
 	// Convert millimeters to pixel units
 	public static function mmToPixels(mm:Float):Float {
 		return Capabilities.screenDPI * (mm / 25.4);
@@ -208,6 +181,7 @@ class NumberTools
 	public static function pixelsToMM(pixels:Float):Float {
 		return (pixels / Capabilities.screenDPI) * 25.4;
 	}
+	#end
 
 	// Generate a fibonacci number
 	// If you wanted to get the 5th number in the sequence you'd use fibonacci(5) for example.
@@ -252,6 +226,7 @@ class NumberTools
 		sequence = [1, 1];
 	}
 
+	#if flash
 	// Use this function to generate Sine Waves
 	public static function sineWave(startPos:Point, speed:Float, waveHeight:Int, waveLength:Int):Point {
 		var p:Point = startPos;
@@ -261,34 +236,7 @@ class NumberTools
 
 		return p;
 	}
-
-	// Returns the Area of a Rectangle
-	public static function areaOfRectangle(width:Float, height:Float):Float {
-		return width * height;
-	}
-
-	// Returns the Area of a perfect Circle, no Ellipses!
-	public static function areaOfCircle(radius:Float):Float {
-		return Math.PI * (radius * radius);
-	}
-
-	// Returns the area of an Elipse
-	public static function areaOfElipse(bigRadius:Float, smallRadius:Float):Float {
-		return Math.PI * (bigRadius * smallRadius);
-	}
-
-	// area of a right angle triangle
-	// where a and b are the lengths of two lines at right angles to each other
-	public static function areaOfRightTriangle(a:Float, b:Float):Float {
-		return (a * b) / 2;
-	}
-
-	// Returns the Area of a Triangle
-	// base = pick a side
-	// perpHaight = length to the top of the triangle, at a right angle to the base
-	public static function areaOfTriangle(base:Float, perpHeight:Float):Float {
-		return (0.5 * base) * perpHeight;
-	}
+	#end
 
 	// Checks to see if a specific float can be located inside an array
 	// Used by the Random Float function to determine if the Float is one of the excluded values
@@ -300,25 +248,6 @@ class NumberTools
 	// Used by the Random Int function to determine if the Int is one of the excluded values
 	public static function intInArray(number:Int, array:Array<Int>):Bool {
 		return Lambda.has(array, number);
-	}
-
-	// Finds the point along a line segment that is closest to a given point in 2D space 
-	// Adapted from code I found on Stack Overflow
-	// http://stackoverflow.com/questions/3120357/get-closest-point-to-a-line 
-	public static function closestPointOnLine(a:Point, b:Point, p:Point, ?toInfinity:Bool = false):Point {
-		var aToP = [p.x - a.x, p.y - a.y]; // store the vector A > P
-		var aToB = [b.x - a.x, b.y - a.y]; // store the vector A > B
-
-		var atb2 = (aToB[0] * aToB[0]) + (aToB[1] * aToB[1]); // Find the squared magnitude of A > B
-		var atp_dot_atb = dotProduct(aToP[0], aToP[1], aToB[0], aToB[1]); // the dot product of A > P and A > B
-		var t = atp_dot_atb / atb2; // the normalised "distance" from a to the closest point 
-
-		// extend the line out to infinity? 
-		if(!toInfinity) {
-			t = clamp(t, 0, 1);
-		}
-
-		return new Point(a.x + aToB[0] * t, a.y + aToB[1] * t); // add the distance to A, moving towards B
 	}
 
 }

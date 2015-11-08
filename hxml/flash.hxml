@@ -1,0 +1,7 @@
+# Files to include
+-cp src
+numbertools/Tools.hx
+numbertools/Geometry.hx
+
+# Output to 
+-swf bin/NumberTools.swc

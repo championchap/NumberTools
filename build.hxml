@@ -1,5 +1,5 @@
-# Files to include
-NumberTools.hx
+hxml/flash.hxml
 
-# Output to 
--swf bin/NumberTools.swc
+--next
+
+hxml/js.hxml
