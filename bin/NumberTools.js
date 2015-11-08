@@ -82,18 +82,27 @@ numbertools_Tools.roundTo = function(num,decimal) {
 	var precision = Math.pow(10,decimal);
 	return Math.round(num * precision) / precision;
 };
+numbertools_Tools.getDecimals = function(value) {
+	var arr = (value == null?"null":"" + value).split(".");
+	var dec = 0;
+	if(arr.length > 1) dec = arr[1].length;
+	return dec;
+};
 numbertools_Tools.clamp = function(value,min,max) {
 	if(max < min) throw new js__$Boot_HaxeError("Error: max must be more than min!");
 	if(value < min) return min; else if(value > max) return max; else return value;
 };
 numbertools_Tools.randomBool = function() {
-	if(Math.round(Math.random()) == 0) return true; else return false;
+	if(Math.round(Math.random()) == 0) return true;
+	return false;
 };
 numbertools_Tools.isOdd = function(value) {
-	if(value % 2 == 1) return true; else return false;
+	if(value % 2 == 1) return true;
+	return false;
 };
 numbertools_Tools.isEven = function(value) {
-	if(value % 2 == 1) return false; else return true;
+	if(value % 2 == 1) return false;
+	return true;
 };
 numbertools_Tools.isPrime = function(value) {
 	if(value > 1) {
