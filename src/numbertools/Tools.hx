@@ -160,18 +160,6 @@ class Tools {
 		return Math.sqrt((dx * dx) + (dy * dy));
 	}
 
-	#if flash
-	// Convert millimeters to pixel units
-	public static function mmToPixels(mm:Float):Float {
-		return Capabilities.screenDPI * (mm / 25.4);
-	}
-
-	// Convert pixel units to millimeters
-	public static function pixelsToMM(pixels:Float):Float {
-		return (pixels / Capabilities.screenDPI) * 25.4;
-	}
-	#end
-
 	// Generate a fibonacci number
 	// If you wanted to get the 5th number in the sequence you'd use fibonacci(5) for example.
 	public static function fibonacci(i:Int):Int {
@@ -215,18 +203,6 @@ class Tools {
 		sequence = [1, 1];
 	}
 
-	#if flash
-	// Use this function to generate Sine Waves
-	public static function sineWave(startPos:Point, speed:Float, waveHeight:Int, waveLength:Int):Point {
-		var p:Point = startPos;
-
-		p.x += speed;
-		p.y = (Math.sin(p.x / waveLength) * waveHeight);
-
-		return p;
-	}
-	#end
-
 	// Checks to see if a specific float can be located inside an array
 	// Used by the Random Float function to determine if the Float is one of the excluded values
 	public static function floatInArray(number:Float, array:Array<Float>):Bool {
@@ -238,5 +214,31 @@ class Tools {
 	public static function intInArray(number:Int, array:Array<Int>):Bool {
 		return Lambda.has(array, number);
 	}
+
+	/*
+		Target Specific - Flash Stuff
+	*/
+
+	#if flash
+	// Convert millimeters to pixel units
+	public static function mmToPixels(mm:Float):Float {
+		return Capabilities.screenDPI * (mm / 25.4);
+	}
+
+	// Convert pixel units to millimeters
+	public static function pixelsToMM(pixels:Float):Float {
+		return (pixels / Capabilities.screenDPI) * 25.4;
+	}
+
+	// Use this function to generate Sine Waves
+	public static function sineWave(startPos:Point, speed:Float, waveHeight:Int, waveLength:Int):Point {
+		var p:Point = startPos;
+
+		p.x += speed;
+		p.y = (Math.sin(p.x / waveLength) * waveHeight);
+
+		return p;
+	}
+	#end
 
 }
